@@ -1,0 +1,30 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class REGEX_EMAIL_ID {
+    public static void main(String[] args) {
+        final String regex = "[a-z]{3,12}\\.[a-z]{3,12}_([c,e,m][s,c,e,o]|[i,c][o,c,s][t,v,f,e])[0-1][0-9]@gla\\.ac\\.in";
+        final String string = "ploiPLOIKL89@gmail.com\n"
+                + "ploiPLOIKL89@gla.ac.in\n"
+                + "ploiPLOIKL89@gla.com\n"
+                + "arpit.srivastava_cs18@gla.ac.in\n"
+                + "arpit.srivastava_csf18@gla.ac.in\n"
+                + "arpit.srivastava_iot18@gla.ac.in\n"
+                + "arpit.srivastava_ccv18@gla.ac.in\n"
+                + "arpit.srivastava_me18@gla.ac.in\n"
+                + "arpit.srivastava_ce18@gla.ac.in\n"
+                + "arpit.srivastava_ee18@gla.ac.in\n"
+                + "arpit.srivastava_ec18@gla.ac.in\n"
+                + "arpit.srivastava_cse18@gla.ac.in";
+
+        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        final Matcher matcher = pattern.matcher(string);
+
+        while (matcher.find()) {
+            System.out.println("Full match: " + matcher.group(0));
+            for (int i = 1; i <= matcher.groupCount(); i++) {
+                System.out.println("Group " + i + ": " + matcher.group(i));
+            }
+        }
+    }
+}
